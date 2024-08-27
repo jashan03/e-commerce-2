@@ -29,10 +29,8 @@ const Pay = () => {
             }
           };
           stripeToken && makeRequest() // becoz when u are returning the div for the first time
-          // the token is being set again as null , n somewhat the value is being 
-          //reassigned hence the useEffect is called therefore to avoid calling the 
-          //makeRequest funtion when the token== null we need to make sure that we only
-          // call makeRequest when its not null
+         // During the initial render of a component, any useEffect hook will run after the component has rendered. 
+         // This is true regardless of whether there has been a state change or not.
     },[stripeToken, navigate]) // include all hooks used as a dependency
 
   
