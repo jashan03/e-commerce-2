@@ -20,9 +20,9 @@ const Pay = () => {
                 "http://localhost:5000/api/checkout/payment",
                 {
                     tokenId:stripeToken.id,
-                    amount:2000,
+                    amount:total *100,
                 });
-                console.log(res.data)
+               
                 navigate('/success')
             }catch(err){
                 console.log(err)
@@ -31,7 +31,7 @@ const Pay = () => {
           stripeToken && makeRequest() // becoz when u are returning the div for the first time
          // During the initial render of a component, any useEffect hook will run after the component has rendered. 
          // This is true regardless of whether there has been a state change or not.
-    },[stripeToken, navigate]) // include all hooks used as a dependency
+    },[stripeToken, navigate , total]) // include all hooks used as a dependency
 
   
   
@@ -49,7 +49,7 @@ const Pay = () => {
         token={onToken} // Ensure this is a function
         stripeKey={KEY} // Ensure this is a valid string (public key)
       >
-        <button>Pay Now</button>
+        <button>CHECKOUT NOW</button>
       </StripeCheckout>
     </div>
   );

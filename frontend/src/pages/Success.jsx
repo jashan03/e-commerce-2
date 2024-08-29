@@ -1,9 +1,13 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 const Success = () => {
+  const location = useLocation();
+  console.log
+     
   return (
-    <div className='w-[50%] h-[50%]'>
-      Payment is successfull . Thanks for choosing happy tails
+    <div>
+      Successfull
     </div>
   )
 }

@@ -15,7 +15,7 @@ const Products = ({cat,filters,sort}) => {
           ? `http://localhost:5000/api/products?category=${cat}`
           : "http://localhost:5000/api/products"
         );
-       console.log('Products fetched:', res.data); 
+       
        setProducts(res.data)
       }catch(err){
         
@@ -25,8 +25,8 @@ const Products = ({cat,filters,sort}) => {
   },[cat])
 
   useEffect(()=>{
-    console.log('Filters:', filters); // Log filters
-    console.log('Products:', products); // Log products
+   
+    
     cat && setFilteredProducts(
          products.filter((item)=>
           Object.entries(filters).every(([key,value])=> //every = all condition of filter have to be meet 

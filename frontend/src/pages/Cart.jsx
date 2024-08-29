@@ -1,13 +1,49 @@
 import React from 'react'
-import App from '../App'
 import Appbar from '../components/Appbar'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import { Add, Remove } from '@mui/icons-material'
+import { useRecoilValue } from 'recoil';
+import {cartProducts, cartTotal} from '../recoil/cartRecoil'
+import StripeCheckout from 'react-stripe-checkout';
+import { useState,useEffect} from 'react';
+import {useNavigate} from 'react-router-dom'
+import { userRequest } from '../requestMethods'
 
-
+const KEY = import.meta.env.VITE_APP_STRIPE;
 
 const Cart = () => {
+    const navigate = useNavigate();
+    const[stripeToken,setStripeToken] = useState(null); // returned after client payment
+    const products = useRecoilValue(cartProducts); 
+    const total  = useRecoilValue(cartTotal)
+
+
+    const onToken = (token) => {
+        setStripeToken(token)
+    };
+
+    useEffect(()=>{
+        const makeRequest = async ()=>{
+          try{
+             const res = await userRequest.post(
+              "/checkout/payment",
+              {
+                  tokenId:stripeToken.id,
+                  amount:2000,
+              });
+              
+              navigate('/success', {data:res.data})
+          }catch(err){
+              console.log(err)
+          }
+        };
+        stripeToken && total >=1 && makeRequest() // becoz when u are returning the div for the first time
+       // During the initial render of a component, any useEffect hook will run after the component has rendered. 
+       // This is true regardless of whether there has been a state change or not.
+  },[stripeToken, navigate]) // include all hooks used as a dependency
+
+    
   return (
     <div>
       <Appbar/>
@@ -24,8 +60,9 @@ const Cart = () => {
         </div>
         <div className=' flex justify-between mt-4'>
                 <div className='flex flex-col flex-1'>
-                <CardItem/>
-                <CardItem/>
+                {products.map((product) => (
+              <CardItem key={product.id} product={product} />
+            ))}
                 
                 
                 </div>
@@ -37,7 +74,7 @@ const Cart = () => {
                     <div className='font-light text-3xl '>ORDER SUMMARY</div>
                     <div className='flex justify-between '>
                         <div>Subtotal</div>
-                        <div>$ 80</div>
+                        <div>{total}</div>
                     </div>
                     <div className='flex justify-between'>
                         <div>Estimated Shipping</div>
@@ -45,13 +82,24 @@ const Cart = () => {
                     </div>
                     <div className='flex justify-between'>
                         <div>Shipping discount</div>
-                        <div>$ 80</div>
+                        <div>$ -80</div>
                     </div>
                     <div className='flex justify-between font-semibold text-lg'>
                         <div>Total</div>
-                        <div>$ 80</div>
+                        <div>{total}</div>
                     </div>
-                    <button className='bg-black text-white p-1'>Checkout now</button>
+                    <StripeCheckout
+                        name="Happy tails"
+                        image="https://i.ibb.co/DG69bQ4/2.png"// Ensure this is a valid React element
+                        billingAddress// Ensure this is a boolean
+                        shippingAddress // Ensure this is a boolean
+                        description={`Yout total is $${total}`} // Ensure this is a string
+                        amount={total * 100} // Ensure this is an integer representing cents
+                        token={onToken} // Ensure this is a function
+                        stripeKey={KEY} // Ensure this is a valid string (public key)
+                    >
+                        <button className='bg-black text-white w-full p-2 hover:bg-gray-800'>CHECKOUT NOW</button>
+                    </StripeCheckout>
                 </div>
         </div>
         
@@ -62,38 +110,38 @@ const Cart = () => {
   )
 }
 
-const ColourFilter =({colour}) =>{
-    return( <div style={{ backgroundColor: colour }} className="rounded-full h-5 w-5 mr-2">
+const ColourFilter =({color}) =>{
+    return( <div style={{ backgroundColor: color }} className="rounded-full h-5 w-5 mr-2">
 
     </div>)
 }
 
-const CardItem = () =>{
+const CardItem = ({product}) =>{
     return (<div className='flex flex-1 border-b border-gray-300 pb-4 '>
        
            
-    <img  className='flex w-[200px]' src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" alt="" />
+    <img  className='flex w-[200px]' src={product.img} alt="" />
     <div className='flex justify-between flex-1 mr-20'> 
             <div className='flex flex-col ml-6 justify-center space-y-3'> 
                 
                 <div className='flex'>
                     <div className='font-bold mr-1'>Product:</div>
-                    <div>Jessi thunder shoes</div>
+                    <div>{product.title}</div>
                 </div>
 
                 <div className='flex'>
                     <div className='font-bold mr-1'>id:</div>
-                    <div>6467588578</div>
+                    <div>{product.id}</div>
                 </div>
 
                 <div className='flex'>
-                    <div><ColourFilter colour="black"/></div>
+                    <div><ColourFilter color={product.color}/></div>
                     
                 </div>
 
                 <div className='flex'>
                     <div className='font-bold mr-1'>Size :</div>
-                    <div>26.6</div>
+                    <div>{product.size}</div>
                 </div>
         </div>
             
@@ -101,10 +149,10 @@ const CardItem = () =>{
         <div className='flex flex-col justify-center items-center space-y-5'>
                 <div className=' flex space-x-1 items-center'>
                     <Add/>
-                    <div className='text-2xl font-semibold'>2</div>
+                    <div className='text-2xl font-semibold'>{product.quantity}</div>
                     <Remove/>
                 </div>
-                <div className='text-3xl font-light'>$ 30</div>
+                <div className='text-3xl font-light'>$ {product.price * product.quantity}</div>
         </div>
         
         

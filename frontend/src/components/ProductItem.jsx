@@ -2,6 +2,7 @@ import React from 'react'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { Link } from 'react-router-dom';
 
 const ProductItem = ({item}) => {
   return (
@@ -10,7 +11,9 @@ const ProductItem = ({item}) => {
         <div className='absolute inset-0 flex justify-center items-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-all ease-in duration-300 group '>
             <div className='flex space-x-2 opacity-0 group-hover:opacity-100'>
                 <ShoppingCartOutlinedIcon sx={{ height:"40px" ,width:"40px" }} className='p-2 rounded-full bg-white transition-all duration-500 ease-in-out hover:bg-[#e9f5f5] hover:scale-110 '/>
-                <SearchOutlinedIcon   sx={{ height:"40px" ,width:"40px" }} className='p-2 rounded-full bg-white transition-all duration-500 ease-in-out hover:bg-[#e9f5f5] hover:scale-110 '/>
+                <Link to={`/product/${item._id}`}>
+                   <SearchOutlinedIcon   sx={{ height:"40px" ,width:"40px" }} className='p-2 rounded-full bg-white transition-all duration-500 ease-in-out hover:bg-[#e9f5f5] hover:scale-110 '/>
+                </Link>
                 <FavoriteBorderOutlinedIcon  sx={{ height:"40px" ,width:"40px" }} className='p-2 rounded-full bg-white duration-500 ease-in-out hover:bg-[#e9f5f5] hover:scale-110'/>
             </div>
         </div>

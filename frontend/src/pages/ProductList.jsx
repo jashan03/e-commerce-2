@@ -27,7 +27,7 @@ const ProductList = () => {
       <Appbar></Appbar>
       <Announcement></Announcement>
       <div className='flex flex-col mx-3'>
-        <div className='flex font-extrabold text-2xl mb-7 mt-4'>Dresses</div>
+        <div className='flex font-extrabold text-2xl mb-7 mt-4'>{cat}</div>
         <div className='flex justify-between mb-2'>
             <div className='flex justify-center items-center'>
                 <div className=' flex font-bold text-md mr-2'>Filter Products:</div>

@@ -18,7 +18,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
-    "react-stripe-checkout": "^2.6.3"
+    "react-stripe-checkout": "^2.6.3",
+    "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
+    "recoilize": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
