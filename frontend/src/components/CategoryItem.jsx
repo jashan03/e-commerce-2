@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const CategoryItem = ({item}) => {
   return (
     
-      <div className=' relative flex flex-1 px-1 py-2'>
+      <div className='relative w-full h-full px-1 py-2'>
         <Link to={`/products/${item.cat}`}>
-            <img src={item.img} className='object-cover w-[100%] h-[100%] '/>
+            <img src={item.img} className='object-cover h-full w-full p-2'/>
             <div className='flex flex-col absolute top-0 left-0 w-full h-full items-center justify-center '>
               <div className='text-white text-xl font-bold mb-2'>
                   {item.title}

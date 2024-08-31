@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Appbar = () => {
 
   const quantity = useRecoilValue(cartQuantity);
-  console.log(quantity)
+  
 
   return (
     <div className='flex justify-between px-7 py-4'>

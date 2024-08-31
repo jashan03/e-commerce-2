@@ -4,7 +4,7 @@ import CategoryItem from './CategoryItem';
 
 const Categories = () => {
   return (
-    <div className='flex h-[70vh]'>
+    <div className='flex flex-1 h-[70vh]'>
       {categories.map((item) => (
         <CategoryItem key={item.id} item={item} />
       ))}

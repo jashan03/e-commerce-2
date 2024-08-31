@@ -9,6 +9,9 @@ import Cart from './pages/Cart'
 import Pay from './pages/Pay'
 import Success from './pages/Success'
 import { BrowserRouter as Router, Route, Routes , Navigate } from 'react-router-dom';
+import Logout from './pages/Logout'
+import { useRecoilValue } from 'recoil'
+import { currentUserState } from './recoil/userRecoil'
 
 function App() {
   //place generic routes after or use 'exactly' keyword
@@ -23,7 +26,8 @@ function App() {
   /*Use useNavigate: When you need to navigate in response to an event (e.g., button click).
     Use Navigate: When you need to perform conditional redirection within your 
     JSX based on some state or props. */  
-  const user = true
+  
+  const user = useRecoilValue(currentUserState);
 
   return (
     <Router>
@@ -37,6 +41,7 @@ function App() {
         <Route path='/success' element={<Success />}/>
         <Route path='/login'  element={user ? <Navigate to="/" /> : <Login />}/>
         <Route path='/register' element={user ? <Navigate to="/" /> : <Register />}/>
+        <Route path='/logout' element={<Logout />}/>
        
      </Routes>
    </div>
