@@ -29,8 +29,12 @@ const Appbar = () => {
               <div> <PetsOutlinedIcon/></div>
         </div>
         <div className='flex space-x-4'>
+          <Link to='register'>
               <div><button type="button" className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-1.5 text-center ">Register</button></div>
+              </Link>
+              <Link to='login'>
               <div><button type="button" className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-1.5 text-center ">Signin</button></div>
+              </Link>
               <Link to="/cart">
               <Badge badgeContent={quantity} color="primary">
                 <div><ShoppingCartOutlinedIcon/></div>
