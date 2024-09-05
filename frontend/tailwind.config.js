@@ -16,6 +16,10 @@ export default {
       screens: {
         'mobile': {'max': '380px'},
       },
+      backgroundImage: {
+        'firefly-bg': "url('/newsImage.jpg')",
+      },
+      
     },
   },
  

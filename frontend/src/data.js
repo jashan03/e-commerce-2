@@ -1,23 +1,23 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/XsdmR2c/1.png",
-      title: "SUMMER SALE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "f5fafd",
+      img: "slider3.png",
+      title: "Pamper Your Pets with Exclusive Deals!",
+      desc: "DISCOVER UNBEATABLE PRICES ON TOP QUALITY PET SUPPLIES.",
+      bg: "9ebcc6",
     },
     {
       id: 2,
-      img: "https://i.ibb.co/DG69bQ4/2.png",
-      title: "AUTUMN COLLECTION",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      img: "pet-food-banner-cover-removebg-preview2.png",
+      title: "Pawsitively Delicious Deals!",
+      desc: "DON’T COMPROMISE ON QUALITY! ENJOY FLAT 30% OFF ON ALL NEW PET FOOD SUPPLIES.",
       bg: "fcf1ed",
     },
     {
       id: 3,
-      img: "https://i.ibb.co/cXFnLLV/3.png",
-      title: "LOUNGEWEAR LOVE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      img: "dog_clothes-removebg-preview.png ",
+      title: "Adorable Styles for Your Beloved Pets",
+      desc: "Fashionable, comfy clothes for pets of all sizes.",
       bg: "fbf0f4",
     },
   ];
@@ -25,21 +25,21 @@ export const sliderItems = [
   export const categories = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "SHIRT STYLE!",
-      cat:"women"
+      img: "toys.jpg",
+      title: "Playtime Essentials",
+      cat:"toy"
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "LOUNGEWEAR LOVE",
-      cat:"coat"
+      img: "food2.jpg",
+      title: "Treats",
+      cat:"food"
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      title: "LIGHT JACKETS",
-      cat:"jeans"
+      img: "care.jpg",
+      title: "Grooming Care",
+      cat:"care"
     },
   ];
 

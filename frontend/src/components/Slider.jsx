@@ -1,6 +1,7 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { sliderItems } from '../data';
 const Slider = () => {
   
@@ -15,41 +16,48 @@ const Slider = () => {
     };
 
   return (
-    <div className="h-screen relative mx-2 bg-slate-100 py-2 overflow-hidden">
-        <ArrowsLeft  onClick={()=>handleClick("left")} />
-        <ArrowsRight  onClick={()=>handleClick("right")}/>
-    <div className='flex flex-row transition-transform duration-300 ease-in-out'
-                style={{ transform: `translateX(-${slideIndex * 100}vw)` }}>
-        {sliderItems.map((item)=>(
-             <div className={`flex flex-shrink-0 w-screen`} key={item.id}>
-             <div className='flex flex-1 px-5'>
-                 <img src={item.img} alt="dog bed" />
-             </div>
-             <div className='flex flex-1'>
-                 <div className='flex justify-center flex-col'>
-                     <div className="flex justify-center">
-                         <div className='max-w-lg"'>
-                             <div className='text-5xl font-extrabold'>
-                                 {item.title}
-                             </div>
-                             <div className='max-w-md text-xl font-semibold text-left mt-4'>
-                                 {item.desc}
-                             </div>
-                             <div>
-                                 <button className='max-w-md font-light mt-5 text-black border border-black text-m px-1 py-1'>SHOP NOW</button>
-                             </div>
-                          </div>
-                     </div>
-                 </div>
-                 
-             </div>
-         </div>
+    <div className="h-[85vh] relative mx-2 bg-slate-100 py-2 overflow-hidden">
+    <ArrowsLeft onClick={() => handleClick("left")} />
+    <ArrowsRight onClick={() => handleClick("right")} />
+    <div
+        className="flex flex-row transition-transform duration-300 ease-in-out"
+        style={{ transform: `translateX(-${slideIndex * 100}vw)` }}
+    >
+        {sliderItems.map((item) => (
+            <div className={`flex flex-shrink-0 w-screen`} key={item.id}>
+                <div className="flex flex-1 px-5">
+                    <img
+                        src={item.img}
+                        className="object-contain w-full max-h-[85vh]"
+                        alt="dog bed"
+                    />
+                </div>
+                <div className="flex flex-1">
+                    <div className="flex flex-col justify-center">
+                        <div className="flex justify-center">
+                            <div className='max-w-lg'>
+                                <div className="text-5xl font-extrabold">
+                                    {item.title}
+                                </div>
+                                <div className="max-w-md text-xl  text-left mt-4">
+                                    {item.desc}
+                                </div>
+                                <div>
+                                    <Link to='products/food'>
+                                    <button className="max-w-md font-light mt-5 text-black border border-black text-m px-1 py-1">
+                                        SHOP NOW
+                                    </button>
+                                    </Link>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         ))}
-       
     </div>
-        
-       
-    </div>
+</div>
+
   )
 }
 

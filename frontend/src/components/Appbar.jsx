@@ -13,7 +13,7 @@ const Appbar = () => {
   
 
   return (
-    <div className='flex justify-between px-7 py-4'>
+    <div className='flex justify-between px-7 py-4 shadow-lg '>
         <div className='flex space-x-4'>
             <div>LNG</div>
             <div className='border border-slate-300 mb-2'>
@@ -23,7 +23,9 @@ const Appbar = () => {
             
         </div>    
         <div className='flex text-2xl font-extrabold'>
+          <Link to="/">
               <div className='text-center'> Happy Tails</div>
+          </Link>    
               <div> <PetsOutlinedIcon/></div>
         </div>
         <div className='flex space-x-4'>

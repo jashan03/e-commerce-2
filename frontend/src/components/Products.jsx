@@ -24,17 +24,33 @@ const Products = ({cat,filters,sort}) => {
     getProducts()
   },[cat])
 
-  useEffect(()=>{
-   
-    
-    cat && setFilteredProducts(
-         products.filter((item)=>
-          Object.entries(filters).every(([key,value])=> //every = all condition of filter have to be meet 
-        item[key].includes(value)
-        )
-      )
-    )
-  },[products,cat,filters])
+  useEffect(() => {
+    if (cat) {
+      setFilteredProducts(
+        products.filter((item) => {
+          // If no filters are chosen, display all products in the category
+          const filterEntries = Object.entries(filters);
+          const filterLength = filterEntries.length;
+  
+          if (!filterLength) {
+            return true;
+          }
+  
+          // Count the number of filter conditions met
+          const conditionsMet = filterEntries.filter(([key, value]) =>
+            item[key].includes(value)
+          ).length;
+  
+          // Set required conditions based on a portion of the total filters
+          const requiredConditions = Math.ceil(filterLength / 2); // e.g., half of the filters must be met
+          return conditionsMet >= requiredConditions;
+        })
+      );
+    }
+  }, [products, cat, filters]);
+  
+
+  
 
   useEffect(() => {
     if (sort === "newest") {
@@ -53,11 +69,11 @@ const Products = ({cat,filters,sort}) => {
   }, [sort]);
 
   return (
-    <div className='flex flex-wrap px-1 space-x-4'>
+    <div className='flex flex-wrap gap-2'>
        {cat
         ? filteredProducts.map((item) => <ProductItem item={item} key={item.id} />)
         : products
-            .slice(0, 8)
+            .slice(0, 7)
             .map((item) => <ProductItem item={item} key={item.id} />)}
     </div>
   )

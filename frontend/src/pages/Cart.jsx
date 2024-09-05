@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil';
 import {cartProducts, cartTotal} from '../recoil/cartRecoil'
 import StripeCheckout from 'react-stripe-checkout';
 import { useState,useEffect} from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import { userRequest } from '../requestMethods'
 
 const KEY = import.meta.env.VITE_APP_STRIPE;
@@ -50,13 +50,15 @@ const Cart = () => {
       <Announcement/>
       <div className='flex flex-col p-7 w-[100%] '>
         <div className='flex justify-center items-center font-light text-3xl '>YOUR BAG</div>
-        <div className='flex justify-between items-center'>
-                <button className='flex border-l border-b-2 border-t border-r-2 border-black p-1'>Continue shopping</button>
+        <div className='flex justify-between items-center '>
+            
                 <div className='space-x-2 flex'>
-                    <div className='underline underline-offset-2'>Shopping bag</div>
-                    <div className='underline underline-offset-2'>You whishlist</div>
+                    <div className='underline underline-offset-2 font-semibold'>Shopping bag</div>
+                    <div className='underline underline-offset-2 font-semibold'>You whishlist</div>
                 </div>
-                <button className='flex text-white bg-black p-1'>Checkout now</button>
+                <Link to='/'>
+                <button className='flex border-l border-b-2 border-t border-r-2 border-black p-1'>Continue shopping</button>
+                </Link>   
         </div>
         <div className=' flex justify-between mt-4'>
                 <div className='flex flex-col flex-1'>
@@ -117,6 +119,7 @@ const ColourFilter =({color}) =>{
 }
 
 const CardItem = ({product}) =>{
+    console.log(product.id)
     return (<div className='flex flex-1 border-b border-gray-300 pb-4 '>
        
            
@@ -131,7 +134,7 @@ const CardItem = ({product}) =>{
 
                 <div className='flex'>
                     <div className='font-bold mr-1'>id:</div>
-                    <div>{product.id}</div>
+                    <div>{product._id}</div>
                 </div>
 
                 <div className='flex'>

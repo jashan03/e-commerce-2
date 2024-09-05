@@ -29,8 +29,8 @@ const Footer = () => {
                     <div className='w-1/2'>
                         <div>Home</div>
                         <div>Cart</div>
-                        <div>Man Fashion</div>
-                        <div>Woman Fashion</div>
+                        <div>Treats</div>
+                        <div>Grooming care</div>
                         <div>Accessories</div>
                     </div>
                     <div className='w-1/2'>
@@ -44,9 +44,9 @@ const Footer = () => {
 
         <div className='flex flex-1 p-4 flex-col'>
             <div className='mb-3 font-extrabold text-lg'>Contact</div>
-            <div className='mb-3'><LocationOnIcon className='mr-2'/>622 Dixie Path , South Tobinchester 98336</div>
+            <div className='mb-3'><LocationOnIcon className='mr-2'/>145 Maple Avenue, East Elmwood, 47209</div>
             <div className='mb-3'><PhoneIcon className='mr-2'/> +1 234 56 78</div>
-            <div className='mb-3'><MailOutlineOutlinedIcon className='mr-2'/> contact@lama.dev</div>
+            <div className='mb-3'><MailOutlineOutlinedIcon className='mr-2'/> contact@.devs</div>
             <img src="https://i.ibb.co/Qfvn4z6/payment.png" alt="payment"  className='h-[30px] w-[200px]'/>
         </div>
       

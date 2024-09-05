@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Cart from './pages/Cart'
 import Pay from './pages/Pay'
 import Success from './pages/Success'
+import Blog from './pages/Blog'
 import { BrowserRouter as Router, Route, Routes , Navigate } from 'react-router-dom';
 import Logout from './pages/Logout'
 import { useRecoilValue } from 'recoil'
@@ -41,6 +42,7 @@ function App() {
         <Route path='/success' element={<Success />}/>
         <Route path='/login'  element={user ? <Navigate to="/" /> : <Login />}/>
         <Route path='/register' element={user ? <Navigate to="/" /> : <Register />}/>
+        <Route path='/blogs/:id' element={<Blog />}/>
         <Route path='/logout' element={<Logout />}/>
        
      </Routes>
