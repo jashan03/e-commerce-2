@@ -9,7 +9,7 @@ const BlogSection = () => {
     // Fetch blog data from your API
     const getBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/blogs'); // Adjust the API endpoint as needed
+        const response = await fetch('https://e-commerce-2-sigma.vercel.app/api/blogs'); // Adjust the API endpoint as needed
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

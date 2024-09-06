@@ -12,8 +12,8 @@ const Products = ({cat,filters,sort}) => {
       try{ // if not cat then home page
         const res = await axios.get(
           cat
-          ? `http://localhost:5000/api/products?category=${cat}`
-          : "http://localhost:5000/api/products"
+          ? `https://e-commerce-2-sigma.vercel.app/api/products?category=${cat}`
+          : "https://e-commerce-2-sigma.vercel.app/api/products"
         );
        
        setProducts(res.data)

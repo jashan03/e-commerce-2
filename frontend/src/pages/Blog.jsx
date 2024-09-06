@@ -14,7 +14,7 @@ const Blog = () => {
 
   useEffect(() => {
     // Fetch the blog based on the id from the URL
-    fetch(`http://localhost:5000/api/blogs/${id}`)  // Adjust the API endpoint as needed
+    fetch(`https://e-commerce-2-sigma.vercel.app/api/blogs/${id}`)  
       .then(response => response.json())
       .then(data => setBlog(data))
       .catch(error => console.error('Error fetching blog:', error));
