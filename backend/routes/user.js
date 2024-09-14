@@ -7,6 +7,8 @@ const {
     verifyTokenAndAdmin,
   } = require("./verifyToken");
 
+
+
 //UPDATE
 router.put('/:id', verifyTokenAndAuthorisation,async(req,res)=>{
     // if password is being updated then hash it first before storing

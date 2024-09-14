@@ -9,6 +9,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import { useState,useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom'
 import { userRequest } from '../requestMethods'
+import {currentUserState} from '../recoil/userRecoil'
 
 const KEY = import.meta.env.VITE_APP_STRIPE;
 
@@ -16,7 +17,8 @@ const Cart = () => {
     const navigate = useNavigate();
     const[stripeToken,setStripeToken] = useState(null); // returned after client payment
     const products = useRecoilValue(cartProducts); 
-    const total  = useRecoilValue(cartTotal)
+    const total  = useRecoilValue(cartTotal);
+    const user = useRecoilValue(currentUserState);
 
 
     const onToken = (token) => {
@@ -43,6 +45,11 @@ const Cart = () => {
        // This is true regardless of whether there has been a state change or not.
   },[stripeToken, navigate]) // include all hooks used as a dependency
 
+  const handleCheckout = ()=>{
+    if(!user){
+        navigate('/login');
+    }
+  }
     
   return (
     <div>
@@ -90,7 +97,8 @@ const Cart = () => {
                         <div>Total</div>
                         <div>{total}</div>
                     </div>
-                    <StripeCheckout
+                    {user?(
+                        <StripeCheckout
                         name="Happy tails"
                         image="https://i.ibb.co/DG69bQ4/2.png"// Ensure this is a valid React element
                         billingAddress// Ensure this is a boolean
@@ -100,8 +108,10 @@ const Cart = () => {
                         token={onToken} // Ensure this is a function
                         stripeKey={KEY} // Ensure this is a valid string (public key)
                     >
-                        <button className='bg-black text-white w-full p-2 hover:bg-gray-800'>CHECKOUT NOW</button>
-                    </StripeCheckout>
+                        <button onClick={handleCheckout} className='bg-black text-white w-full p-2 hover:bg-gray-800'>CHECKOUT NOW</button>
+                    </StripeCheckout>):
+                    <button onClick={handleCheckout} className='bg-black text-white w-full p-2 hover:bg-gray-800'>CHECKOUT NOW</button>
+                    }
                 </div>
         </div>
         

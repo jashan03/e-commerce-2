@@ -23,7 +23,7 @@ router.post("/register",async(req,res)=>{
 
     
     try{
-      saltRounds=10;
+      const saltRounds=10;
       const hashedPassword = await bcrypt.hash(req.body.password,saltRounds)
        const newUser = new User({
         username: req.body.username,
@@ -33,10 +33,24 @@ router.post("/register",async(req,res)=>{
 
      
         const savedUser = await newUser.save();
+      
+
+        const accessToken = jwt.sign({
+          id:newUser.id,
+          isAdmin:newUser.isAdmin,
+        } , process.env.JWT_SECRET,
+        {expiresIn:"3d"}
+      )
+        // puts everything except pass u got from user ie(findOne query) into others object
+        const {password, ...others} = newUser._doc;
+         
         res.status(201).json({
-            message: "User registered successfully",
-            user: savedUser
-        });
+          message:"user creation is successful",
+          ...others,
+          accessToken
+         
+        })
+  
     } catch (err) {
         console.log(err);
         res.status(500).json({

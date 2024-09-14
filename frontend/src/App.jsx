@@ -32,7 +32,7 @@ function App() {
 
   return (
     <Router>
-   <div>  
+    <div>  
      <Routes>
         <Route path='/products/:category' element={<ProductList />}/> 
         <Route path='/product/:id' element={<Product/>}/>
@@ -46,7 +46,7 @@ function App() {
         <Route path='/logout' element={<Logout />}/>
        
      </Routes>
-   </div>
+     </div>
    </Router>
   )
 }

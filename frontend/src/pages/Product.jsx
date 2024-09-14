@@ -45,7 +45,11 @@ const Product = () => {
   }
 
   const handleClick = () => {
-    const newProduct = { ...product, quantity: defquantity , color:color};
+    const newProduct = { ...product,
+       quantity: defquantity ,
+       color: product.color ? (color || product.color[0]) : null,
+       size: size || product.size?.[0]
+      };
     addProduct(newProduct);
   };
 

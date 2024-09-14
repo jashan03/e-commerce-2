@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useRecoilValue } from 'recoil';
 import { useLogin } from '../recoil/apiCalls'; // Ensure the correct path
 import { isFetchingState, errorState} from '../recoil/userRecoil';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -11,10 +12,19 @@ const Login = () => {
   const error = useRecoilValue(errorState);
   const login = useLogin();
 
-  const handleClick = (e) => {
+  const handleClick = async(e) => {
     e.preventDefault();
     const user = { username, password };
-    login(user); // Call the login function
+    
+    const response = await login(user); // Call the login function
+    
+    if (response && response.success) {
+      // If login is successful, navigate to home
+      navigate('/');
+    } else {
+      // Handle login failure, if needed
+      console.log('Login failed');
+    }
   };
 
   return (
@@ -23,7 +33,7 @@ const Login = () => {
       <div
         className="absolute inset-0 bg-center bg-cover"
         style={{
-          backgroundImage: "url('https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')",
+          backgroundImage: "url('https://img.freepik.com/premium-photo/there-is-frame-with-pet-supplies-bowl-kibble-grooming-tools-pastel-pink-background-it-is-flat-lay-top-view-with-copy-space_717906-75013.jpg?w=826')",
           opacity: 0.5,
         }}
       ></div>
@@ -45,8 +55,9 @@ const Login = () => {
         <div className="text-xs text-gray-600 mt-2 ml-3 underline underline-offset-2 ">
           DONOT REMEMBER THE PASSWORD?
         </div>
+        <Link to='/register'>
         <div className='text-xs text-gray-600 mt-2 ml-3 underline underline-offset-2'> CREATE A NEW ACCOOUNT</div>
-        
+        </Link>
       </div>
     </div>
   );
