@@ -16,7 +16,7 @@ const Slider = () => {
     };
 
   return (
-    <div className="lg:h-[85vh] sm:h-[60vh] relative bg-slate-100 py-2 px-2 overflow-hidden">
+    <div className="lg:h-[85vh] sm:h-[60vh] relative bg-slate-100 py-2 px-1 overflow-hidden">
     <ArrowsLeft handleArrowClick={() => handleClick("left")} />
     <ArrowsRight handleArrowClick={() => handleClick("right")} />
     <div

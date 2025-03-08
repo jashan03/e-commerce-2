@@ -14,8 +14,7 @@ const Appbar = () => {
 
   return (
     <div className='flex justify-between px-7 py-4 shadow-lg '>
-        <div className='flex space-x-4'>
-            <div className='cursor-pointer'>LNG</div>
+        <div className='flex'>
             <div className='flex justify-between items-center border border-slate-300 mb-2 px-1'>
                 <input type='text' placeholder='Search' className='w-full sm:w-3/4 md:w-1/2 lg:w-full' ></input>
                 <Search style={{color:"gray", fontSize:20}}></Search>
