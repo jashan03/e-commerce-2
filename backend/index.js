@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
@@ -13,11 +13,13 @@ const cors = require("cors");
 
 dotenv.config();
 
+const MONGO_URL = process.env.MONGO_URL;
+
 mongoose
-  .connect("mongodb+srv://jashan:jashnkh@cluster0.yedusmp.mongodb.net/Shop")
+  .connect(MONGO_URL)
   .then(() => console.log("DB Connection Successful!"))
   .catch((err) => {
-    console.log(err);
+    console.error("MongoDB connection error:", err);
   });
 
 app.use(cors());
@@ -33,6 +35,8 @@ app.use("/api/blogs", blogRoute);
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running");
 });
+
+
 
 
 

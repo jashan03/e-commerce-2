@@ -12,7 +12,7 @@ router.post("/", verifyToken,async (req,res)=>{
     const newCart = new Cart(req.body)
 
     try{
-       const savedCart = await newcart.save();
+       const savedCart = await newCart.save();
        res.status(200).json(savedCart);
     }catch(err){
         res.status(500).json({err})
@@ -22,7 +22,6 @@ router.post("/", verifyToken,async (req,res)=>{
 
 //UPDATE
 router.put('/:id', verifyTokenAndAuthorisation,async(req,res)=>{
-    // if password is being updated then hash it first before storing
     
     try{
          const updatedCart = await Cart.findByIdAndUpdate(req.params.id,
@@ -40,7 +39,7 @@ router.put('/:id', verifyTokenAndAuthorisation,async(req,res)=>{
     
 });
 
-//DELETE
+//DELETE entire cart
 router.delete('/:id', verifyTokenAndAuthorisation, async (req,res)=>{
     try{
        await Cart.findByIdAndDelete(req.params.id)
@@ -53,12 +52,12 @@ router.delete('/:id', verifyTokenAndAuthorisation, async (req,res)=>{
 //GET USER CART
 router.get('/find/:userId',verifyTokenAndAuthorisation, async (req,res)=>{
     try{
-      const cart= await Cart.findOne({iserID:req.params.userId})
+      const cart= await Cart.findOne({userId:req.params.userId})
      
        
       res.status(200).json({
         message:"Cart is fetched successfully",
-        product
+        cart
        
       })
        

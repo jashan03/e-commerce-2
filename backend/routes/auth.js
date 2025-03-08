@@ -36,13 +36,14 @@ router.post("/register",async(req,res)=>{
       
 
         const accessToken = jwt.sign({
-          id:newUser.id,
-          isAdmin:newUser.isAdmin,
+          id:savedUser.id,
+          isAdmin:savedUser.isAdmin,
         } , process.env.JWT_SECRET,
         {expiresIn:"3d"}
       )
         // puts everything except pass u got from user ie(findOne query) into others object
-        const {password, ...others} = newUser._doc;
+        //doc allows destructing + mongoose_doc to object
+        const {password, ...others} = savedUser._doc;
          
         res.status(201).json({
           message:"user creation is successful",

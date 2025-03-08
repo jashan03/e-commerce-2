@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BlogItem = ({ blog }) => {
   return (
-    <div className="flex flex-col max-w-sm overflow-hidden shadow-lg m-2 cursor-pointer">
+    <div className="flex flex-col max-w-sm overflow-hidden shadow-lg m-2 cursor-pointer px-1">
       <Link to={`/blogs/${blog._id}`} className="flex flex-col h-full">
         <div className="flex-shrink-0">
           <img

@@ -21,9 +21,7 @@ router.post("/", verifyTokenAndAdmin,async (req,res)=>{
 })
 
 //UPDATE
-router.put('/:id', verifyTokenAndAdmin,async(req,res)=>{
-    // if password is being updated then hash it first before storing
-    
+router.put('/:id', verifyTokenAndAdmin,async(req,res)=>{    
     try{
          const updatedProduct = await Product.findByIdAndUpdate(req.params.id,
             {
@@ -32,7 +30,7 @@ router.put('/:id', verifyTokenAndAdmin,async(req,res)=>{
          {
             new:true
         })  // to return updated body
-         res.status(200).json({updatedUser})
+         res.status(200).json({updatedProduct})
     }catch(err){
         res.status(500).json({err})
     }
@@ -90,6 +88,12 @@ router.get('/',async (req,res)=>{
        res.status(500).json(err)
     }
 })
+
+/*else if (qCategory) {
+  products = await Product.aggregate([
+    { $match: { categories: qCategory } }
+  ]);
+}*/
 
 
 

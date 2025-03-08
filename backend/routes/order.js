@@ -22,7 +22,6 @@ router.post("/", verifyToken,async (req,res)=>{
 
 //UPDATE
 router.put('/:id', verifyTokenAndAdmin,async(req,res)=>{
-    // if password is being updated then hash it first before storing
     
     try{
          const updatedOrder = await Order.findByIdAndUpdate(req.params.id,
@@ -77,13 +76,13 @@ router.get('/',verifyTokenAndAdmin,async (req,res)=>{
 })
 
 //GET MONTHLY INCOME
-// comapre incomes from last n the month previous
+// comapre incomes from last 2 month 
 router.get("/income", verifyTokenAndAdmin, async (req,res)=>{
 //     Original Date: Sat Aug 24 2024 10:45:00 GMT+0000 (Coordinated Universal Time)
 // After setMonth ie last month: Wed Jul 24 2024 10:45:00 GMT+0000 (Coordinated Universal Time)
     const date = new Date();  // current date
     const lastMonth = new Date(date.setMonth(date.getMonth()-1)); // it modifies the date with month = month-1 n stores it in last month
-    const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth()-1)); // takes current date n sets it month to month - 1 of last month ie current month-2 = prev month
+    const previousMonth = new Date(lastMonth.setMonth(lastMonth.getMonth()-1)); // takes current date n sets it month to month - 1 of last month ie current month-2 = prev month
 
     try{
       const income = await Order.aggregate([
