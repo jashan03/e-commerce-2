@@ -9,7 +9,7 @@ const BlogSection = () => {
     // Fetch blog data from your API
     const getBlogs = async () => {
       try {
-        const response = await fetch('https://e-commerce-2-sigma.vercel.app/api/blogs'); // Adjust the API endpoint as needed
+        const response = await fetch('https://e-commerce-2-sigma.vercel.app/api/blogs'); // Adjust the API endpoint 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -24,7 +24,7 @@ const BlogSection = () => {
   }, []); // Empty dependency array ensures this runs once on component mount
 
   return (
-    <div className='flex flex-1 mx-3 my-3 '>
+    <div className='flex flex-1 mx-3 my-3 items-stretch'>
       {blogs.map(blog => (
         <BlogItem key={blog._id} blog={blog} />
       ))}

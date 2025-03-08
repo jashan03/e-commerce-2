@@ -28,11 +28,11 @@ const ProductList = () => {
       <Announcement></Announcement>
       <div className='flex flex-col mx-3'>
         <div className='flex font-extrabold text-2xl mb-7 mt-4 uppercase'>{cat}</div>
-        <div className='flex justify-between mb-2'>
+        <div className='flex justify-between flex-wrap mb-2'>
             <div className='flex justify-center items-center'>
-                <div className=' flex font-bold text-md mr-2'>Filter Products:</div>
+                <div className=' flex font-bold text-md mr-2 mb-2'>Filter Products:</div>
                 <select  name="color" onChange={handleFilters} className='text-sm p-1 border border-gray-300 rounded mr-2' >
-                    <option className=" flex ">
+                    <option className=" flex " disabled selected>
                      Color
                     </option>
                     <option>white</option>
@@ -43,7 +43,7 @@ const ProductList = () => {
                     <option>green</option>
                 </select>
                 <select  name="size" onChange={handleFilters}  className=' text-sm p-1 border border-gray-300 rounded'>
-                    <option  className=" flex">
+                    <option  className=" flex" disabled selected>
                      Size
                     </option>
                     <option>XS</option>
@@ -54,7 +54,7 @@ const ProductList = () => {
                 </select>
             </div>
             <div className='flex justify-center items-center'>
-                <div className=' flex font-bold text-md mr-2 '>Filter Products:</div>
+                <div className=' flex font-bold text-md mr-2 '>Sort Products:</div>
                 <select onChange={(e)=>{setSort(e.target.value)}} className='text-sm p-1 border border-gray-300 rounded'>
                     <option value='newest'>Newest</option>
                     <option value='asc'>Price (asc)</option>

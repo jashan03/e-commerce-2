@@ -68,15 +68,13 @@ const Products = ({cat,filters,sort}) => {
     }
   }, [sort]);
 
-  return (
-    <div className='flex flex-wrap gap-2'>
-       {cat
+  return ( // for responsiveness , flex doesnt work here well - cant defin eno of items per col based on screen size + img resizeing acc 
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-4 ">
+      {cat
         ? filteredProducts.map((item) => <ProductItem item={item} key={item.id} />)
-        : products
-            .slice(0, 7)
-            .map((item) => <ProductItem item={item} key={item.id} />)}
+        : products.slice(0, 7).map((item) => <ProductItem item={item} key={item.id} />)}
     </div>
-  )
+  );
 }
 
 export default Products

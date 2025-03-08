@@ -43,9 +43,9 @@ const Login = () => {
         <div className="text-2xl font-light mb-4 ml-3">SIGN IN</div>
         <div className="flex flex-col text-slate-800">
          
-          <input type="text" placeholder="Username"   onChange={(e) => setUsername(e.target.value)} className="border p-2 m-2 " />
+          <input type="text" placeholder="Username"   onChange={(e) => setUsername(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0 " />
           
-          <input type="password" placeholder="Password"    onChange={(e) => setPassword(e.target.value)} className="border p-2 m-2 " />
+          <input type="password" placeholder="Password"    onChange={(e) => setPassword(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0" />
           
         </div>
         <button onClick={handleClick} disabled={isFetching} className={`bg-teal-800 text-white w-[100px] h-[40px] mt-4 mb-2 ml-3 ${isFetching ? 'opacity-50 cursor-not-allowed' : ''}`}>

@@ -1,5 +1,6 @@
 import SendIcon from '@mui/icons-material/Send';
 const Newsletter = () => {
+  // custom bg-image : defined in tailwind.config.js
   return (
         <div className='flex flex-col items-center justify-center h-[55vh] bg-firefly-bg bg-cover  w-full'>
         

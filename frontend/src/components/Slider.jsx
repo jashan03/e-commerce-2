@@ -16,9 +16,9 @@ const Slider = () => {
     };
 
   return (
-    <div className="h-[85vh] relative mx-2 bg-slate-100 py-2 overflow-hidden">
-    <ArrowsLeft onClick={() => handleClick("left")} />
-    <ArrowsRight onClick={() => handleClick("right")} />
+    <div className="lg:h-[85vh] sm:h-[60vh] relative bg-slate-100 py-2 px-2 overflow-hidden">
+    <ArrowsLeft handleArrowClick={() => handleClick("left")} />
+    <ArrowsRight handleArrowClick={() => handleClick("right")} />
     <div
         className="flex flex-row transition-transform duration-300 ease-in-out"
         style={{ transform: `translateX(-${slideIndex * 100}vw)` }}
@@ -61,13 +61,13 @@ const Slider = () => {
   )
 }
 
-const ArrowsLeft= ({onClick})=>{
-    return <div className='absolute top-[50%] transform -translate-y-1/2 cursor-pointer z-20' onClick={onClick} >
+const ArrowsLeft= ({handleArrowClick})=>{
+    return <div className='absolute top-[50%] transform -translate-y-1/2 cursor-pointer z-20 ' onClick={handleArrowClick} >
          <ArrowBackIosIcon className='z-0'/>
     </div>
 }
-const ArrowsRight= ({onClick})=>{
-    return <div className='absolute top-[50%] left-[96%] transform -translate-y-1/2 cursor-pointer z-20'onClick={onClick}>
+const ArrowsRight= ({handleArrowClick})=>{
+    return <div className='absolute top-[50%] left-[96%] transform -translate-y-1/2 cursor-pointer z-20'onClick={handleArrowClick}>
          <ArrowForwardIosIcon/>
     </div>
 }

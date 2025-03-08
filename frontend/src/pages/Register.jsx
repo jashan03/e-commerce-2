@@ -63,15 +63,15 @@ const Register = () => {
       ></div>
       
       {/* White Content Layer */}
-      <div className="relative flex flex-col bg-white w-[45%] z-10 p-4 rounded-lg shadow-lg">
+      <div className="relative flex flex-col bg-white max-w-[45%] z-10 p-4 rounded-lg shadow-lg">
         <div className="text-xl font-bold mb-4">Create an account</div>
         <div className="flex flex-wrap text-slate-800">
-          <input type="text" placeholder="Name" className="border p-2 m-2 " />
-          <input type="text" placeholder="Last Name" className="border p-2 m-2  " />
-          <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="border p-2 m-2 " />
-          <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="border p-2 m-2  " />
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} className="border p-2 m-2 " />
-          <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} className="border p-2 m-2 " />
+          <input type="text" placeholder="Name" className="border p-2 m-2 shrink-1 min-w-0 " />
+          <input type="text" placeholder="Last Name" className="border p-2 m-2 shrink-1 min-w-0 " />
+          <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0 " />
+          <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0 " />
+          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0" />
+          <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} className="border p-2 m-2 shrink-1 min-w-0 " />
         </div>
         <div className="text-sm text-gray-600 mt-4 ml-3">
           By creating an account, I consent to the processing of my personal data

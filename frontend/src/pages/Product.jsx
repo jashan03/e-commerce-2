@@ -57,13 +57,16 @@ const Product = () => {
     <div>
       <AppBar/>
       <Announcement/>
-      <div className='flex  my-10 mx-10'>
-         <img src={product.img} className='flex-1 object-cover h-[80vh]'  />
-         <div className='flex-1 ml-11'>
-            <div className='flex flex-col'>
+
+      <div className='flex  my-10 '>
+         <div className='flex flex-1'>
+            <img src={product.img} className='h-full w-full object-contain'/>
+         </div>
+         <div className=' flex flex-1 ml-3'>
+            <div className='flex flex-col  '>
                 <div className='font-light text-3xl pb-6'>{product.title}</div>
                 <div className='pb-6'>{product.desc} </div>
-                <div className='font-light text-4xl pb-6 '>$ {product.price}</div>
+                <div className='font-light text-4xl pb-6'>$ {product.price}</div>
                     <div className='flex mb-6'>
                         <div className='mr-3'>Colour </div>
                         {product.color?.map((c)=>(
@@ -91,6 +94,7 @@ const Product = () => {
          </div>
 
       </div>
+
       <Newsletter/>
       <Footer/>
 

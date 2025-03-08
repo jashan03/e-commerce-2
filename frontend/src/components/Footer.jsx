@@ -7,6 +7,7 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className='flex flex-row mb-4'>
@@ -16,28 +17,25 @@ const Footer = () => {
             the majority have suffered alteration in some form, by injected
             humour, or randomised words which don’t look even slightly believable.</div>
             <div className='flex mb-2 space-x-4'>
-                    <FacebookIcon sx={{ height:"30px" ,width:"30px" }} className='bg-facebook-blue text-white rounded-full p-1'/>
-                    <InstagramIcon sx={{ height:"30px" ,width:"30px" }} className='bg-instagram-pink text-white rounded-full p-1'/>
-                    <TwitterIcon sx={{ height:"30px" ,width:"30px"}} className='bg-twitter-blue text-white rounded-full p-1'/>
-                    <PinterestIcon sx={{ height:"30px" ,width:"30px" }} className='bg-pinterest-red text-white rounded-full p-1'/>
-
+                    
+                    <SocialIcons></SocialIcons>
             </div>
         </div>   
         <div className='flex flex-1 flex-col p-4'>
-                <div className='mb-2 font-extrabold text-lg'>Useful Links</div>
+                <div className='mb-2 font-extrabold text-lg '>Useful Links</div>
                 <div className='flex flex-wrap'>
-                    <div className='w-1/2'>
-                        <div>Home</div>
-                        <div>Cart</div>
-                        <div>Treats</div>
-                        <div>Grooming care</div>
-                        <div>Accessories</div>
+                    <div className='flex-1'>
+                        <Link to='/'><div>Home</div></Link>
+                        <Link to='/cart'><div>Cart</div></Link>
+                        <Link to='/'><div>Treats</div></Link>
+                        <Link to='/'><div>Grooming Care</div></Link>
+                        <Link to='/'><div>Accessories</div></Link>
                     </div>
-                    <div className='w-1/2'>
-                        <div>My Account</div>
-                        <div>Order Tracking</div>
-                        <div>Wishlist</div>
-                        <div>Terms</div>
+                    <div className='flex-1'>
+                        <Link to='/'><div>My Account</div></Link>
+                        <Link to='/'><div>Order Tracking</div></Link>
+                        <Link to='/'><div>Wishlist</div></Link>
+                        <Link to='/'><div>Terms</div></Link>
                     </div>
                 </div>
         </div>
@@ -54,4 +52,25 @@ const Footer = () => {
   )
 }
 
+// for opening these links in a new tab 
+const socialLinks = [
+  { href: "https://www.facebook.com/", Icon: FacebookIcon, bg: "bg-facebook-blue" },
+  { href: "https://www.instagram.com/", Icon: InstagramIcon, bg: "bg-instagram-pink" },
+  { href: "https://x.com/?lang=en", Icon: TwitterIcon, bg: "bg-twitter-blue" },
+  { href: "https://in.pinterest.com/", Icon: PinterestIcon, bg: "bg-pinterest-red" }
+];
+
+// to apply security attributes , norefferer n noopener in a concise manner
+const SocialIcons = () => (
+  <div className="flex space-x-2">
+    {socialLinks.map(({ href, Icon, bg }, index) => (
+      <a key={index} href={href} target="_blank" rel="noopener noreferrer">
+        <Icon sx={{ height: 30, width: 30 }} className={`${bg} text-white rounded-full p-1`} />
+      </a>
+    ))}
+  </div>
+);
+
+
 export default Footer
+

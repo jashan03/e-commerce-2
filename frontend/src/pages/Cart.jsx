@@ -67,19 +67,14 @@ const Cart = () => {
                 <button className='flex border-l border-b-2 border-t border-r-2 border-black p-1'>Continue shopping</button>
                 </Link>   
         </div>
-        <div className=' flex justify-between mt-4'>
-                <div className='flex flex-col flex-1'>
+        <div className=' flex flex-wrap justify-between mt-4'>
+                <div className='flex flex-col flex-1 mb-7'>
                 {products.map((product) => (
               <CardItem key={product.id} product={product} />
             ))}
-                
-                
                 </div>
                 
-
-            
-                
-                <div className='flex flex-col w-[30vw] h-[60vh] border border-gray-200 rounded-lg justify-center p-4 space-y-4'>
+                <div className='flex flex-col w-[60vw] h-[40vh] md:w-[30vw] md:h-[60vh] border border-gray-200 rounded-lg justify-center p-4 space-y-4'>
                     <div className='font-light text-3xl '>ORDER SUMMARY</div>
                     <div className='flex justify-between '>
                         <div>Subtotal</div>
@@ -87,11 +82,11 @@ const Cart = () => {
                     </div>
                     <div className='flex justify-between'>
                         <div>Estimated Shipping</div>
-                        <div>$ 80</div>
+                        <div>{total? '$80' :  '$0'}</div>
                     </div>
                     <div className='flex justify-between'>
                         <div>Shipping discount</div>
-                        <div>$ -80</div>
+                        <div>{total? '$-80' : '$0'}</div>
                     </div>
                     <div className='flex justify-between font-semibold text-lg'>
                         <div>Total</div>
